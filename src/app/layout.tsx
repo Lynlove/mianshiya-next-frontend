@@ -10,7 +10,7 @@ import store, { AppDispatch } from "@/stores";
 import { Provider, useDispatch } from "react-redux";
 import AccessLayout from "@/access/AccessLayout";
 import ACCESS_ENUM from "@/access/accessEnum";
-import {setLoginUser} from "@/stores/loginUser";
+import { setLoginUser } from "@/stores/loginUser";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,17 +30,18 @@ const InitLayout: React.FC<
     const res = await getLoginUserUsingGet();
     if (res.data) {
       // 更新全局用户状态
+      dispatch(setLoginUser(res.data));
     } else {
       // 仅用于测试
-      setTimeout(() => {
-        const testUser = {
-          userName: "测试登录",
-          id: 1,
-          userAvatar: "https://www.code-nav.cn/logo.png",
-          userRole: ACCESS_ENUM.ADMIN
-        };
-        dispatch(setLoginUser(testUser));
-      }, 3000);
+      // setTimeout(() => {
+      //   const testUser = {
+      //     userName: "测试登录",
+      //     id: 1,
+      //     userAvatar: "https://www.code-nav.cn/logo.png",
+      //     userRole: ACCESS_ENUM.ADMIN,
+      //   };
+      //   dispatch(setLoginUser(testUser));
+      // }, 3000);
     }
   }, []);
 
