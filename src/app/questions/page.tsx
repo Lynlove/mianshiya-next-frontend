@@ -36,7 +36,7 @@ export default async function QuestionsPage({ searchParams }) {
         defaultQuestionList={questionList}
         defaultTotal={total}
         defaultSearchParams={{
-          title: searchText,
+          searchText,
         }}
       />
     </div>
