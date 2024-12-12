@@ -2,7 +2,7 @@
 import {
     GithubFilled,
     LogoutOutlined,
-    SearchOutlined,
+    SearchOutlined, UserOutlined,
 } from "@ant-design/icons";
 import { ProLayout } from "@ant-design/pro-components";
 import {Dropdown, Input, message} from "antd";
@@ -113,6 +113,11 @@ export default function BasicLayout({ children }: Props) {
                                 menu={{
                                     items: [
                                         {
+                                            key: "userCenter",
+                                            icon: <UserOutlined />,
+                                            label: "个人中心",
+                                        },
+                                        {
                                             key: "logout",
                                             icon: <LogoutOutlined />,
                                             label: "退出登录",
@@ -123,8 +128,10 @@ export default function BasicLayout({ children }: Props) {
                                         // 退出登录
                                         if (key === "logout") {
                                             userLogout();
+                                        }else if (key === "userCenter") {
+                                            router.push("/user/center");
                                         }
-                                    }
+                                    },
                                 }}
                             >
                                 {dom}
